@@ -10,28 +10,45 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<style type="text/css"/>
 
 <title>Cart</title>
 </head>
 <body>
-<h4>cart</h4>
-<%@include file="Header.jsp"%>
-
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
-<form id="cart" action="cart" method="post" >
+<%@ include file="Header.jsp"%>
 
 <div class="container">
-<table class="table table-striped">
-<thead>
-<tr>
-			<td>hai</td>
-		</tr>
-	
-        </thead>
+<table class="table table-striped" style="border-width:3px;border-color:black;">
+ <thead>
+		<td>Product image</td>
+		<td>Name</td>
+		<td>Total</td>
+		<td>Quantity</td>
+       </thead>
+       <c:forEach items="${listCarts}" var="cart">
+       <tr>
+       <form method="post" action="<c:url value="/updatecart/${cart.cartId}"/>">
+       <td><img src="<c:url value="/resources/images/${cart.productId}.jpg"/>" width="75px" height="75px"><br>
+       <a href="<c:url value="/deletecart/${cart.cartId}"/>"><button type="submit"class="btn btn-link btn-xs">Delete</button></a>
+       <c:if test="${Cart.cartId==cart.cartId}">
+		${alert}
+		</c:if>
+       </td>
+      <td>${cart.productName}</td>
+	<td>${cart.subtotal}</td>
+<td><input name="quantity" id="sel" value="${cart.quantity}"></td>
+<td><button type="submit"class="btn btn-info">Check Price</button></td>
+</form><td>
+</td>
+       </tr>
+       </c:forEach>
+       <tr>
+<td>GrandTotal<td>
+<td>${grandtotal}</td>
+<td></td>
+</tr>
+       <td><a href="<c:url value="/confirm/${cart.cartId}"/>"><button type="submit"class="btn btn-secondary">Confirm Order</button></a></td>
 </table>
 </div>
-</form>
+
 </body>
 </html>

@@ -14,7 +14,7 @@
 <title>Description</title>
 </head>
 <body>
- <form action="<c:url value="/addToCart"/>" method="post">
+ <form action="<c:url value="/moveCart/${dispinfo.productId}"/>"method="post" enctype="multipart/form-data">
 <center>
 <section class="intro">
     <row>
@@ -27,7 +27,7 @@
       <center>
       <div class="col-lg-6 col-sm-12 right">
         <br><br><br>
-        Name:
+        	Name:
           <td>${dispinfo.productName}</td><br><br><br>
           Description:
 			<td>${dispinfo.prodDesc}</td><br><br><br>
@@ -36,7 +36,7 @@
 			Price
 			<td>${dispinfo.price}</td><br><br><br>
 			
-			<button class="btn btn-info" ><span class="glyphicon glyphicon-shopping-cart" role="button">Add to Cart</span></button>
+			<button class="btn btn-info" ><span class="glyphicon glyphicon-shopping-cart">Add to Cart</span></button>
 		
        
       </div>

@@ -139,17 +139,21 @@ public class ProductController
 	
 		List<Product> prodlist=productDAO.listProducts();
 		m.addAttribute("listProducts",prodlist);
+		List<Category> categlist=categoryDAO.getCategories(); 
+		m.addAttribute("listcat",categlist);
+		List<Supplier> suppllist=supplierDAO.getSuppliers();
+		m.addAttribute("listsup",suppllist);
 		m.addAttribute("productInfo",product);
 		
 		return "updateProduct";
 		
 	}
 	@RequestMapping(value = "/UpdateProduct", method = RequestMethod.POST)
-	public ModelAndView updateProductToDb(@RequestParam("proname") String name, @RequestParam("prodesc") String des,
-			@RequestParam("stock") int stock,@RequestParam("price") int price,@RequestParam("pimage") MultipartFile pimage,
-			@RequestParam("catid") int catid,@RequestParam("supid") int supid,Model m)
+	public ModelAndView updateProductToDb(@RequestParam("proid") int proid,@RequestParam("proname") String name, @RequestParam("prodesc") String des,
+			@RequestParam("stock") int stock,@RequestParam("price") int price,@RequestParam("catid") int catid,
+			@RequestParam("supid") int supid, @RequestParam("pimage") MultipartFile pimage,Model m)
 	{
-		Product product=new Product();
+		Product product=productDAO.getProduct(proid);
 		product.setProductName(name);
 		product.setProdDesc(des);
 		product.setStock(stock);
@@ -159,19 +163,53 @@ public class ProductController
 		
 
 		productDAO.updateProduct(product);
-		m.addAttribute(product);
+		
+		
 		List<Product> prodlist=productDAO.listProducts();
 		ModelAndView mv=new ModelAndView("productPage", "prolist", prodlist);
-		
-		
-		
-		m.addAttribute("prolist", prodlist);
 		List<Category> categlist=categoryDAO.getCategories(); 
 		m.addAttribute("listcat",categlist);
 		List<Supplier> suppllist=supplierDAO.getSuppliers();
 		m.addAttribute("listsup",suppllist);
 		
+		
+		
+		String path="C:/Users/Pavithra/eclipse-workspace/VIFrontEnd/src/main/webapp/resources/images/";
+		path=path+String.valueOf(product.getProductId())+".jpg";
+		
+		File oldimage=new File(path);
+		oldimage.delete();
+		
+		File image=new File(path);
+		
+		if(!pimage.isEmpty())
+		{
+
+			try 
+			{
+				byte[] fileBuffer=pimage.getBytes();	
+				FileOutputStream fos=new FileOutputStream(image);
+				BufferedOutputStream bs=new BufferedOutputStream(fos);
+				bs.write(fileBuffer);
+				bs.close();
+
+			}
+			
+			catch (Exception e)
+			{
+				System.out.println("Exception Arised:"+e);
+				e.printStackTrace();
+			}
+			
+		}
+		else
+		{
+			System.out.println("Problem Occured in File Uploading");
+		}
+		
 		return mv;
+		
+	
 	}
 	
 	@RequestMapping(value = "/displayProduct")

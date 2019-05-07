@@ -34,7 +34,7 @@ public class UserController
 	@Autowired
 	UserDAO userDAO;
 	
-	@RequestMapping(value="/saveuser",method=RequestMethod.POST)
+	@RequestMapping(value="/saveuser")
 	public String saveUser(@RequestParam("username") String name, @RequestParam("passwd") String passwd, @RequestParam("mobno") String mob,
 			@RequestParam("email") String mail,Model m)
 	{
@@ -62,7 +62,8 @@ public class UserController
 	
 	@RequestMapping("/login_success")
 	public String showMessage(@RequestParam(value="username")String name,@RequestParam(value="password")String password, 
-			HttpSession session,Model model) {
+			HttpSession session,Model model) 
+	{
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		
 		@SuppressWarnings("unchecked")
@@ -78,12 +79,13 @@ public class UserController
 	     {
 	    	 session.setAttribute("username",username);
 			 session.setAttribute("SuccessMessage","Login Successful");
-	    	 page="category";	    	
+	    	 page="DisplayProduct";	    	
 	     }
 	     else 
 	     {
 	  
 	    page="DisplayProduct";
+	    session.setAttribute("username", "Admin");
 	    session.setAttribute("SuccessMessage","Login Successful");
 	    	 break;
 	    }

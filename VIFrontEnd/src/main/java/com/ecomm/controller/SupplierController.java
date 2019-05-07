@@ -82,11 +82,11 @@ public class SupplierController
 	}
 	
 	@RequestMapping(value="/UpdateSupplier",method=RequestMethod.POST)
-	public ModelAndView updateCategoryToDb(@RequestParam("supid") int id,@RequestParam("supname") String name, @RequestParam("supdesc") String desc)
+	public ModelAndView updateCategoryToDb(@RequestParam("supplierId") int id,@RequestParam("supname") String name, @RequestParam("suploc") String loc)
 	{
 		Supplier supplier=supplierDAO.getSupplier(id);
 		supplier.setSupplierName(name);
-		supplier.setSupplierLocation(desc);
+		supplier.setSupplierLocation(loc);
 
 		supplierDAO.updateSupplier(supplier);
 		List<Supplier> suppllist=supplierDAO.getSuppliers();

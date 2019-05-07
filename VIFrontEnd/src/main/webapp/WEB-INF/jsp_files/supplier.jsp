@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<jsp:include page="Header.jsp" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,14 +16,14 @@
 <center>
 <div class="container">
 <form id="supplier" action="suppliersave" method="post">
-Category details<br><br>
-Category Name:
+Supplier details<br><br>
+Supplier Name:
  <div class="form-group">
       <input type="text" class="form-control form-control-sm" placeholder="Enter the supplier name" name="supname" id="supName">
     </div>
-category Description:
+Supplier Location:
  <div class="form-group">
-      <input type="text" class="form-control form-control-sm" placeholder="Enter the supplier location" name="supdesc" id="supDesc">
+      <input type="text" class="form-control form-control-sm" placeholder="Enter the supplier location" name="suploc" id="suploc">
     </div>
 <input type="submit" value="submit"/>
 </center>

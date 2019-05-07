@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,22 +9,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-
-<title>Update category</title>
+<style type="text/css">
+</style>
+<title>Update Product</title>
 
 </head>
 <body>
 <%@include file="Header.jsp"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="container">
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <h4 align="center">Product Updation</h4>
- <form id="updateproduct" class="form-horizontal" action="/UpdateProduct" method="post" enctype="multipart/form-data">
+ <form id="updateproduct" class="form-horizontal" action="<c:url value="/UpdateProduct"/>" method="post" enctype="multipart/form-data">
 <div style="padding-left:250px; padding-right: 250px;">
+<div class="container">
 	<div class="form-group">
-      <label for="sel1">Category ID:</label>
-      <select class="form-control" id="sel1" name="sellist1">
+      <label for="text">Category ID:</label>
+      <select class="form-control"  name="catid">
       <c:forEach items="${listcat}" var="cat">
         <option value="${cat.categoryId}">${cat.categoryName}</option>
         </c:forEach>
@@ -31,8 +34,8 @@
       <br>
       </div>
 	<div class="form-group">
-      <label for="sel1">Supplier ID:</label>
-      <select class="form-control" id="sel1" name="sellist1">
+      <label for="text">Supplier ID:</label>
+      <select class="form-control"  name="supid">
       <c:forEach items="${listsup}" var="sup">
         <option value="${sup.supplierId}">${sup.supplierName}</option>
         </c:forEach>
@@ -74,6 +77,10 @@
       <input type="text" class="form-control" id="price" name="price" value="${productInfo.price}"/>
     </div>
   </div> 
+  update Image:
+    <div class="form-group">
+      <input type="file" accept="resources/images/*" name="pimage">
+    </div>
   
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">
@@ -82,19 +89,21 @@
     </div>
   </div>
 	
-	</form>
+	
 	</div>
 	</div>
 	
 <div class="container">
 	   <table class="table table-bordered">
 	   <thead>
+	   <tr>
 		<td>Product ID</td>
 		<td>Product Name</td>
 		<td>Product Desc</td>
 		<td>Stock</td>
 		<td>Price</td>
 		<td>Image</td>
+		</tr>
 	</thead>
 	<c:forEach items="${listProducts}" var="pro">
 	<tr>
@@ -109,6 +118,7 @@
 	
 </table>
 </div>
+</form>
 </body>
 </html>
 

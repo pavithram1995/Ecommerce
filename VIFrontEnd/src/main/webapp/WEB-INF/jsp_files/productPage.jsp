@@ -27,7 +27,7 @@ Product details<br><br>
 <div style="padding-left:250px; padding-right: 250px;">
 <div class="form-group">
       <label for="sel1">Category ID:</label>
-      <select class="form-control" id="sel1" name="sellist1">
+      <select class="form-control" id="catid" name="catid">
       <c:forEach items="${listcat}" var="cat">
         <option value="${cat.categoryId}">${cat.categoryName}</option>
         </c:forEach>
@@ -36,7 +36,7 @@ Product details<br><br>
       </div>
 <div class="form-group">
       <label for="sel1">Supplier ID:</label>
-      <select class="form-control" id="sel1" name="sellist1">
+      <select class="form-control" id="supid" name="supid">
       <c:forEach items="${listsup}" var="sup">
         <option value="${sup.supplierId}">${sup.supplierName}</option>
         </c:forEach>

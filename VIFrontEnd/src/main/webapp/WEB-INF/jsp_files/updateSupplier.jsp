@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <jsp:include page="Header.jsp" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,21 +25,21 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="text">Supplier ID:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" readonly id="catid" name="catid" value="${supplierInfo.supplierId}""/>
+      <input type="text" class="form-control" readonly id="supplierId" name="supplierId" value="${supplierInfo.supplierId}""/>
     </div>
   </div>
 
   <div class="form-group">
     <label class="control-label col-sm-2" for="text">Supplier Name:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="catname" name="catname" value="${supplierInfo.supplierName}"/>
+      <input type="text" class="form-control" id="supname" name="supname" value="${supplierInfo.supplierName}"/>
     </div>
   </div>
 	
   <div class="form-group">
     <label class="control-label col-sm-2" for="text">Supplier Location:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="catdesc" name="catdesc" value="${supplierInfo.supplierLocation}"/>
+      <input type="text" class="form-control" id="suploc" name="suploc" value="${supplierInfo.supplierLocation}"/>
     </div>
   </div>
   

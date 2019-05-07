@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-  <title>Bootstrap Example</title>
+  <title>books</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -14,12 +14,9 @@
   <div class="container-fluid" >
     <div class="navbar-header">     
 	<a class="navbar-brand" href="<c:url value="/"/>">Home</a>
-	<a class="navbar-brand" href="<c:url value="/category"/>">Category</a>
-	<a class="navbar-brand" href="supplier">Supplier</a>
-	<a class="navbar-brand" href="productPage">Product</a>
-	<a class="navbar-brand" href="displayProduct">Display Product</a>
-	<a class="navbar-brand" href="carouselslide">Carousel</a>
-	<a class="navbar-brand" href="Cart">cart</a>
+	<a class="navbar-brand" href="#">About Us</a>
+	<a class="navbar-brand" href="#">Contact Us</a>
+	
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
 	<ul class="nav navbar-nav navbar-right">

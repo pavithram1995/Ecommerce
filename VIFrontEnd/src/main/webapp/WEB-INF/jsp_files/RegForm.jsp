@@ -3,10 +3,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Register</title>
 </head>
 <body>
-<form id="register" action="saveuser" method="post" >
+<form id="register" action="saveuser" >
 <center><b>${name}</b></center><br>
 <center><b><u>Registration Form</u></b></br></br></br>
 Enter Name:
@@ -27,8 +27,8 @@ Enter Email id:
 Enter Contact No:
 <input type="text" name="mobno" pattern="[6-9]{1}[0-9]{9}" title="Enter 10 digit numbers, first digit should be from 6 to 9" required> </br></br>
 Password:
-<input id="passwd" type="password" class="form-control" name="passwd" placeholder="Password">
-<input type="submit" name="submit"/>
+<input id="passwd" type="password" class="form-control" name="passwd" placeholder="Password"><br><br>
+<input type="submit" name="register" value="Register"/>
 </table>
 </center>
 </form>
