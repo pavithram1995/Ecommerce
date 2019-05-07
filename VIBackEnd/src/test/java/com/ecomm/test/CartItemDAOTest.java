@@ -38,10 +38,11 @@ CategoryDAO categoryDAO;
 		cartItem.setProductId(2);
 		cartItem.setCartId(2);
 		cartItem.setQuantity(5);
-		cartItem.setUsername("Pavi");
+		cartItem.setUsername("user1");
 		cartItem.setPaymentStatus("NP");
-		cartItem.setSubtotal(100);
-		assertTrue("Problem in Cart Insertion",cartDAO.addCartItem(cartItem));
+		cartItem.setSubtotal(499);
+		cartItem.setProductName("motivational");
+		assertTrue("Problem in Cart Insertion",cartDAO.addCart(cartItem));
 	}
 	@Ignore
 	@Test
@@ -50,15 +51,15 @@ CategoryDAO categoryDAO;
 		assertNotNull("Problem in get Category",cartDAO.getCartItem(2));
 	}
 	
-	@Ignore
+	
 	@Test
 	public void deleteCartTest()
 	{
-		CartItem cartItem=cartDAO.getCartItem(2);
+		CartItem cartItem=cartDAO.getCartItem(192);
 		assertTrue("Problem in Deletion:",cartDAO.deleteCartItem(cartItem));
 	}
     
-	
+	@Ignore
 	@Test
 	public void updateCartTest()
 	{

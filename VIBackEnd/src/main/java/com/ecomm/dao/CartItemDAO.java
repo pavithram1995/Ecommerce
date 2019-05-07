@@ -6,7 +6,7 @@ import com.ecomm.model.CartItem;
 
 public interface CartItemDAO
 {
-	public boolean addCartItem(CartItem cartItem);
+	public boolean addCart(CartItem cartItem);
     public CartItem getCartItem(int cartItemId);
 	public boolean deleteCartItem(CartItem cartItem);
 	public boolean updateCartItem(CartItem cartItem);

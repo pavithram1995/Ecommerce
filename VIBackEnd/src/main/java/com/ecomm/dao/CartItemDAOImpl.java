@@ -19,7 +19,7 @@ public class CartItemDAOImpl implements CartItemDAO
 	@Transactional
 	@Override
 	
-	public boolean addCartItem(CartItem cartItem)
+	public boolean addCart(CartItem cartItem)
 	{
 		try
 		{
@@ -80,15 +80,15 @@ public class CartItemDAOImpl implements CartItemDAO
 			return false;
 		}
 	}
-
+	@Transactional
 	@Override
 	public List<CartItem> getCartItems(String username)
 	{
 		try
 		{
 			Session session=sessionFactory.openSession();
-			//CartItem cartItem=(CartItem)session.createQuery("form CartItem where username=:username and status=:'NP'");
-			Query query=session.createQuery("from CartItem");
+			Query query = session.createQuery("from CartItem where Username=:username and PaymentStatus='NP'");
+			query.setParameter("username",username);
 			List<CartItem> listCartItem=(List<CartItem>)query.list();
 			return listCartItem;
 		}
