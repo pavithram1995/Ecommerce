@@ -32,16 +32,17 @@ public class CartController
 		String username=(String)session.getAttribute("username");
 		System.out.println(username);
 		List<CartItem> listCarts=cartDAO.getCartItems(username);
-		for(CartItem cat : listCarts)
+		for(CartItem cart : listCarts)
 		{
-		System.out.println(">>>>>>>>>>>>>>>cat id : "+cat.getProductName());;
+		System.out.println(">>>>>>>>>>>>>>>cart id : "+cart.getProductName());;
 		}
 		
 		m.addAttribute("listCarts", listCarts);
 		
 		List<Product> prodlist=productDAO.listProducts();
 		m.addAttribute("prolist", prodlist);
-	
+		m.addAttribute("grandtotal", grandTotal(listCarts));
+		System.out.printf("total",grandTotal(listCarts));
 		
 		return "Cart";
 	}
@@ -82,8 +83,9 @@ public class CartController
 		cartDAO.addCart(cart);
 		
 		
-		m.addAttribute("carlist", listCarts);
+		m.addAttribute("listCarts", listCarts);
 		m.addAttribute("grandtotal",grandTotal(listCarts));
+		
 		
 		return "Cart";
 		}
@@ -139,7 +141,8 @@ public class CartController
 	{
 	
 		double grandTotal1=0,grandTotal=0;
-		try {
+		try
+		{
 		for(CartItem cart: listCarts)
 		{
 			grandTotal1=grandTotal1+cart.getQuantity()*(productDAO.getProduct(cart.getProductId()).getPrice());
@@ -147,8 +150,10 @@ public class CartController
 		}
 		int grandTotal2=(int)(grandTotal1*100);
 		grandTotal=(double)grandTotal2/100; 
+		System.out.println("grandTotal");
 		}
-		catch(Exception e) {
+		catch(Exception e) 
+		{
 			System.out.println("grand total error");
 		}
 		

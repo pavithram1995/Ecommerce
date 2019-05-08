@@ -38,6 +38,17 @@ public class UserController
 	public String saveUser(@RequestParam("username") String name, @RequestParam("passwd") String passwd, @RequestParam("mobno") String mob,
 			@RequestParam("email") String mail,Model m)
 	{
+		boolean flag=false;
+		List<User> listUser=userDAO.getUser();
+		for(User user1:listUser)
+		{
+			if(name.equals(user1.getUsername())) {
+				flag=true;
+				break;
+			}
+		}
+		if(flag==false) 
+		{
 		User user=new User();
 		user.setEmail(mail);
 		user.setMobileNo(mob);
@@ -49,6 +60,12 @@ public class UserController
 		m.addAttribute("usrlist", userlist);
 		
 		return "login";
+	}
+		else
+		{
+			m.addAttribute("alert","Username is already taken");
+		}
+		return "RegForm";
 	}
 
 	@RequestMapping("/login_failure")

@@ -28,7 +28,7 @@
        <tr>
        <form method="post" action="<c:url value="/updatecart/${cart.cartId}"/>">
        <td><img src="<c:url value="/resources/images/${cart.productId}.jpg"/>" width="75px" height="75px"><br>
-       <a href="<c:url value="/deletecart/${cart.cartId}"/>"><button type="submit"class="btn btn-link btn-xs">Delete</button></a>
+       
        <c:if test="${Cart.cartId==cart.cartId}">
 		${alert}
 		</c:if>
@@ -37,7 +37,11 @@
 	<td>${cart.subtotal}</td>
 <td><input name="quantity" id="sel" value="${cart.quantity}"></td>
 <td><button type="submit"class="btn btn-info">Check Price</button></td>
-</form><td>
+</form>
+<div>
+<td><a href="<c:url value="/deletecart/${cart.cartId}"/>"><button type="submit"class="btn btn-link ">Delete</button></a></td>
+</div>
+<td>
 </td>
        </tr>
        </c:forEach>
@@ -45,8 +49,18 @@
 <td>GrandTotal<td>
 <td>${grandtotal}</td>
 <td></td>
+
+<td>
+</td>
+<td>
+</td>
 </tr>
-       <td><a href="<c:url value="/confirm/${cart.cartId}"/>"><button type="submit"class="btn btn-secondary">Confirm Order</button></a></td>
+<td><a href="<c:url value="/displayProduct"/>"><button type="submit"class="btn btn-secondary">Continue Shopping</button></a></td>
+
+
+<center>
+     <td>  <a href="<c:url value="/confirm"/>"><button type="submit"class="btn btn-info ">Confirm Order</button></a></td>
+</center>       
 </table>
 </div>
 

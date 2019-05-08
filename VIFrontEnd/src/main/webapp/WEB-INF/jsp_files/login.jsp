@@ -17,8 +17,8 @@
 	<br><br><br><br><b>Login</b>
 	</div>
 	<br><br><br><br>
-	<div class="container" style=" padding-left:400px; padding-right: 400px;">
-	<div class="col-lg-6; style="padding-left:1000px; padding-right: 1000px;">
+	<div class="container"; style=" padding-left:500x;">
+	
 	<form id="login" action="<c:url value="/perform_login"/>" method= "post">
     		<div class="input-group">
      		 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -39,7 +39,7 @@
       		<input id="password" type="password" class="form-control" name="password" placeholder="Password">
   		</div>
 		<br><br>
-		<button type="button" class="btn btn-link">Forget Password?</button> 
+		
 		<br><br>
 		<input type="submit" class="btn btn-info" value="Login"/>
 		<input class="btn btn-secondary" type="reset" value="Reset">

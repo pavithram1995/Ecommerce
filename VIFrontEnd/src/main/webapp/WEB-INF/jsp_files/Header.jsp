@@ -35,10 +35,11 @@
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
  <c:if test="${not empty SuccessMessage}">
- ${username}
-   <li><a href="perform_logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+   <li><a href="<c:url value="/perform_logout"/>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+  <li> <font color="white"><span class="glyphicon glyphicon-user"></span> Hello! ${username}</font></li>
  </c:if>    
 	</ul>
+	
   </div>
 </div>
 </nav>
