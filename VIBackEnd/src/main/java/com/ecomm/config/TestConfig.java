@@ -18,6 +18,8 @@ import com.ecomm.dao.CartItemDAO;
 import com.ecomm.dao.CartItemDAOImpl;
 import com.ecomm.dao.CategoryDAO;
 import com.ecomm.dao.CategoryDAOImpl;
+import com.ecomm.dao.OrderDetailDAO;
+import com.ecomm.dao.OrderDetailDAOImpl;
 import com.ecomm.dao.ProductDAO;
 import com.ecomm.dao.ProductDAOImpl;
 import com.ecomm.dao.SupplierDAO;
@@ -26,6 +28,7 @@ import com.ecomm.dao.UserDAO;
 import com.ecomm.dao.UserDAOImpl;
 import com.ecomm.model.CartItem;
 import com.ecomm.model.Category;
+import com.ecomm.model.OrderDetail;
 import com.ecomm.model.Product;
 import com.ecomm.model.Supplier;
 import com.ecomm.model.User;
@@ -68,6 +71,7 @@ public class TestConfig
 		sessionBuilder.addAnnotatedClass(Product.class);
 		sessionBuilder.addAnnotatedClass(CartItem.class);
 		sessionBuilder.addAnnotatedClass(User.class);
+		sessionBuilder.addAnnotatedClass(OrderDetail.class);
 		System.out.println("Session Factory Object Created");
 		return sessionBuilder.buildSessionFactory();
 	}	
@@ -111,5 +115,11 @@ public class TestConfig
 	{
 		System.out.println("----User DAO Implementation---");
 		return new UserDAOImpl();
+	}
+	@Bean(name="orderDAO")
+	public OrderDetailDAO getuserDAO()
+	{
+		System.out.println("----order DAO Implementation---");
+		return new OrderDetailDAOImpl();
 	}
 }
