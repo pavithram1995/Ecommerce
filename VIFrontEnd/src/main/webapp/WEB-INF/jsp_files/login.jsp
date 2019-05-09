@@ -13,25 +13,25 @@
 </head>
 <body>
 	<center>
-	<div class="container" style="padding-left:500px; padding-right: 500px;">
-	<br><br><br><br><b>Login</b>
-	</div>
-	<br><br><br><br>
-	<div class="container"; style=" padding-left:500x;">
 	
+	<br><br><br><br><b>Login</b>&nbsp
+	<span class="glyphicon glyphicon-gift"></span>
+	
+	<br><br><br><br>
 	<form id="login" action="<c:url value="/perform_login"/>" method= "post">
+	<div class="container" style="padding-left:400px; padding-right: 400px">
+	
     		<div class="input-group">
      		 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-		<input 
-		id="name"
-	type="text" 
+		<input id="name" type="text" 
 	name="username" 
 	class="form-control"
 	placeholder="Enter your user name"
 	pattern="[A-Za-z]+" 
 	title="Enter only the alphabets between a to z"
-	required/><br><br>
+	required>
 		</div>
+		<br><br>
 		<br><br>
 		
 		<div class="input-group">
@@ -42,11 +42,14 @@
 		
 		<br><br>
 		<input type="submit" class="btn btn-info" value="Login"/>
-		<input class="btn btn-secondary" type="reset" value="Reset">
+		<input class="btn btn-secondary" type="reset" value="Reset"><br><br><br>
+	</div>
 		</form>
-	</div>
-	</div>
+	
+	<div class="d-flex justify-content-center links">
+					Don't have an account?
+					<br><br><a href="<c:url value="/register"/>">Register</a>
+				</div>
 	</center>
 </body>
 </html>
-		

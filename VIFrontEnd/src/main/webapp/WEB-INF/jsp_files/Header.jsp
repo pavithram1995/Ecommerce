@@ -12,13 +12,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid" >
     <div class="navbar-header">     
     <c:if test="${username=='Admin'}">
 	<a class="navbar-brand" href="<c:url value="/WEB-INF/jsp_files/home.jsp"/>">Home</a>
 	<a class="navbar-brand" href="<c:url value="/category"/>">Category</a>
-	<a class="navbar-brand" href="<c:url value="/WEB-INF/jsp_files/supplier.jsp"/>">Supplier</a>
+	<a class="navbar-brand" href="<c:url value="/supplier"/>">Supplier</a>
 	<a class="navbar-brand" href="<c:url value="/productPage"/>">Product</a>
 	</c:if>
 	<c:if test="${username!='Admin' }">

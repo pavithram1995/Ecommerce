@@ -27,6 +27,7 @@ public class OrderController
 	
 	@Autowired
 	ProductDAO productDAO;
+	
 	@Autowired
 	OrderDetailDAO orderDAO;
 	
@@ -94,12 +95,26 @@ public class OrderController
 				}
 				orderDetail.setTotalAmount(grandTotal);
 			    orderDAO.ConfirmOrderDetail(orderDetail);
-		        
-		
-		
-		
+			    
+			    List<CartItem> listCartItems1=cartDAO.paidCartItems(username);
+			    for(CartItem Cart3:listCartItems1)
+				{
+			         CartItem Cart4=cartDAO.getCartItem(Cart3.getCartId());
+			         Cart4.setPaymentStatus("Paid");
+			         cartDAO.updateCartItem(Cart4);
+				}
+			    List<CartItem> paidcart=cartDAO.paidCartItems(username);
+			    
+			    for(CartItem cartItem1: paidcart)
+				{
+					grandTotal=grandTotal+cartItem1.getQuantity()*(productDAO.getProduct(cartItem1.getProductId()).getPrice());
+				}
+				orderDetail.setTotalAmount(grandTotal);
+			    orderDAO.ConfirmOrderDetail(orderDetail);
+			    
+			    
 	         return "ThankYou";
 		
 	}
-
+	
 }
