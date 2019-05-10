@@ -12,13 +12,13 @@ import org.springframework.stereotype.Repository;
 
 import com.ecomm.model.Category;
 
-@Repository("categoryDAO")
+@Repository("categoryDAO")//@Repository is an annotation that marks the specific class as a Data Access Object
 public class CategoryDAOImpl implements CategoryDAO
 {
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	@Transactional
+	@Transactional//transaction propagation are handled automatically
 	@Override
 	public boolean addCategory(Category category)
 	{

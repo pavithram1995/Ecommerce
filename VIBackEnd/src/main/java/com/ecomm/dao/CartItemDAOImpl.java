@@ -98,4 +98,20 @@ public class CartItemDAOImpl implements CartItemDAO
 	
 	}
 
+	@Override
+	public List<CartItem> paidCartItems(String username) 
+	{
+		try
+		{
+			Session session=sessionFactory.openSession();
+			Query query = session.createQuery("from CartItem where Username=:username and PaymentStatus='P'");
+			query.setParameter("username",username);
+			List<CartItem> listCartItem=(List<CartItem>)query.list();
+			return listCartItem;
+		}
+		catch(Exception e){
+			return null;
+		}
+	}
+
 }

@@ -35,16 +35,32 @@ import com.ecomm.model.User;
 
 
 @Configuration
+				/*@Configuration annotation on top 
+				of any class to declare that this class provides 
+				one or more @Bean methods and may be processed by the
+ 				Spring container to generate bean definitions and service
+  				requests for those beans at runtime.*/
 @ComponentScan("com.ecomm")
+//@ComponentScan annotation is used with the @Configuration annotation to tell Spring the packages to scan for annotated components. 
 @EnableTransactionManagement
+//@Transactional on itself or its members, Spring creates a proxy that implements the same interface(s) as the class you're annotating
 public class TestConfig 
 {
 	@Autowired
+	/*@Autowired annotation can be used to autowire bean on the setter method, Autowiring feature of spring framework 
+	enables you to inject the object dependency implicitly.*/
 	@Bean (name="dataSource")
-	public DataSource getH2DataSource()
+	/*
+	 Spring @Bean Annotation is applied on a method to specify that it returns a bean to be managed by Spring context.
+	  Spring Bean annotation is usually declared in Configuration classes methods. In this case, bean methods may reference other
+	   @Bean methods in the same class by calling them directly.
+	   JavaBean class in Java. JavaBeans are classes that encapsulate many objects into a single object (the bean). 
+	    All properties in java bean must be private with public getters and setter methods.
+	 */
+	public DataSource getH2DataSource()//The DataSource(interface) object can be used to create a connection to the data source it represents.
 	{
 		System.out.println("Data Source Object Creating");
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();//Configuring the plain old JDBC DriverManager via bean properties, and returning a new Connection from every getConnection call.
 		dataSource.setDriverClassName("org.h2.Driver");
 		dataSource.setUrl("jdbc:h2:tcp://localhost/~/ecomdb");
 		dataSource.setUsername("sa");
@@ -55,12 +71,23 @@ public class TestConfig
 	
 	@Autowired
 	@Bean(name="sessionFactory")
+
 	public SessionFactory getSessionFactory() 
+	//This object is a kind of factory object which can create multiple sessions.Each session will be used for connectivity with the database.
+	// (Session)This particular component will basically used for doing all the CRUD operation on database.
 	{
 		System.out.println("Hibernate Properties Object Creating");
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
+		/*
+		 Hibernate can work with different databases.Hibernate uses "dialect" 
+		 configuration to know which database you are using so that it can switch to the database specific SQL generator code wherever/whenever necessary.
+		 */
 		properties.put("hibernate.hbm2ddl.auto","update");
+		/*
+		 	hibernate.hbm2ddl.auto Automatically validates or exports schema DDL to the database when the SessionFactory is created. 
+		   With create-drop, the database schema will be dropped when the SessionFactory is closed explicitly.
+		 */
 		System.out.println("Hibernate Properties Object Created");
 		System.out.println("Table Source Created");
 		System.out.println("Session Factory Object Creating");
@@ -75,6 +102,7 @@ public class TestConfig
 		System.out.println("Session Factory Object Created");
 		return sessionBuilder.buildSessionFactory();
 	}	
+	
 	@Autowired
 	@Bean(name="transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) 
