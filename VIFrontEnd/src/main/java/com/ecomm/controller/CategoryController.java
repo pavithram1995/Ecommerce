@@ -14,13 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ecomm.dao.CategoryDAO;
 import com.ecomm.model.Category;
 
-@Controller
+@Controller//The @Controller annotation is used to mark any java class as a controller class.Controllers act as an interface between Model and View components
 
 public class CategoryController
 {
 
-	@RequestMapping(value="/category",method=RequestMethod.GET)
-	public ModelAndView categoryPage()
+	@RequestMapping(value="/category",method=RequestMethod.GET)//The @RequestMapping annotation is used to map the web request "/userRegistration.htm" to the UserController class.
+	public ModelAndView categoryPage()//The Model component corresponds to all the data-related logic that the user works with.The View component is used for all the UI logic of the application.
 	{
 		List<Category> categlist=categoryDAO.getCategories();
 		for(Category cat : categlist)
@@ -33,12 +33,14 @@ public class CategoryController
 		ModelAndView mv=new ModelAndView("category", "catlist", categlist);
 		return mv;
 	}
+	
 	@Autowired
 	CategoryDAO categoryDAO;
 	
 	
 	@RequestMapping(value = "/categorysave", method = RequestMethod.POST)
 	public ModelAndView insertCategoryData(@RequestParam("catname") String name, @RequestParam("catdesc") String desc)
+	//@RequestParam is used to get the request parameters from URL(Uniform Resource Locator), also known as query parameters.It is used to extract values from the HTTP request
 	{
 		Category category = new Category();
 		category.setCategoryName(name);
@@ -46,19 +48,17 @@ public class CategoryController
 
 		categoryDAO.addCategory(category);
 		List<Category> categlist=categoryDAO.getCategories();
-		ModelAndView mv=new ModelAndView("category", "catlist", categlist);
+		ModelAndView mv=new ModelAndView("category", "catlist", categlist);//ModelAndView(String viewName,String modelName,Object modelObject)
 		return mv;
 	}
 	@RequestMapping("/deleteCategory/{categoryId}")
-	public ModelAndView deleteCategory(@PathVariable("categoryId") int categoryId)
+	public ModelAndView deleteCategory(@PathVariable("categoryId") int categoryId)//@PathVariable extracts values from URI.(Uniform Resource Identifier).It is used to extract values from the HTTP request
 	{
 		Category category=categoryDAO.getCategory(categoryId);
 		
 		categoryDAO.deleteCategory(category);
 		
-		//List<Category> listCategories=categoryDAO.getCategories();
-		//m.addAttribute("listCategories",listCategories);
-		boolean flag=false;
+		
 		List<Category> categlist=categoryDAO.getCategories();
 		ModelAndView mv=new ModelAndView("category", "catlist", categlist);
 		return mv;
