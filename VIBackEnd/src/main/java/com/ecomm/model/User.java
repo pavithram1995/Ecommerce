@@ -12,12 +12,22 @@ public class User
 @Id
 @GeneratedValue
 private int userId;
+private String name;
 private String username;
 private String password;
 private String mobileNo;
 private String email;
 private boolean enabled=true;
 private String role="ROLE_USER";
+
+
+
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
 public int getUserId() {
 	return userId;
 }

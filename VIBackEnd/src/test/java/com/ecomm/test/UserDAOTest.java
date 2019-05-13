@@ -35,6 +35,7 @@ public class UserDAOTest
 		user.setMobileNo("9876543210");
 		user.setPassword("user");
 		user.setUsername("user");
+		user.setName("name");
 		user.setRole("ROLE_USER");
 		user.setEmail("user@mail.com");
 		assertTrue("Problem in User Insertion",userDAO.addUser(user));
@@ -56,8 +57,8 @@ public class UserDAOTest
 		
 		for(User user:listUser)
 		{
-			System.out.print(user.getUsername()+":::");
-			System.out.print(user.getEmail()+":::");
+			System.out.println(user.getUsername()+":::");
+			System.out.println(user.getEmail()+":::");
 			
 		}
 	}
