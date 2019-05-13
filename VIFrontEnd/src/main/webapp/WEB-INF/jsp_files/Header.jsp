@@ -17,12 +17,12 @@
   <div class="container-fluid" >
     <div class="navbar-header">     
     <c:if test="${username=='Admin'}">
-	<a class="navbar-brand" href="<c:url value="/WEB-INF/jsp_files/home.jsp"/>">Home</a>
+	<a class="navbar-brand" href="<c:url value="/home"/>">Home</a>
 	<a class="navbar-brand" href="<c:url value="/category"/>">Category</a>
 	<a class="navbar-brand" href="<c:url value="/supplier"/>">Supplier</a>
 	<a class="navbar-brand" href="<c:url value="/productPage"/>">Product</a>
 	</c:if>
-	<c:if test="${username!='Admin' }">
+	<c:if test="${username!='Admin'}">
 	<a class="navbar-brand" href="<c:url value="/displayProduct"/>">Display Product</a>
 	<a class="navbar-brand" href="<c:url value="/Cart"/>">cart</a>
 	</c:if>
@@ -30,8 +30,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
 	<ul class="nav navbar-nav navbar-right">
 	     <c:if test="${empty SuccessMessage}">
-    	<li> <a href="login">Login<span class="glyphicon glyphicon-log-in"></span></a></li>
-	<li> <a href="RegForm">register<span class="glyphicon glyphicon-pencil"></span></a></li>
+    	<li> <a href="<c:url value="/login"/>">Login<span class="glyphicon glyphicon-log-in"></span></a></li>
+	<li> <a href="<c:url value="/register"/>">register<span class="glyphicon glyphicon-pencil"></span></a></li>
 	</c:if>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">

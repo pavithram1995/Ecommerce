@@ -11,6 +11,21 @@ public class NavigationController
 	{
 		return "index";
 	}
+	@RequestMapping(value="/home")
+	public String homePage()
+	{
+		return "home";
+	}
+	@RequestMapping(value="/aboutus")
+	public String aboutusPage()
+	{
+		return "aboutus";
+	}
+	@RequestMapping(value="/contactus")
+	public String contactPage()
+	{
+		return "contactus";
+	}
 
 	
 }

@@ -69,8 +69,28 @@ public class OrderController
 		
 		return grandTotal;
 	}
+	public double grandTotals(List<CartItem> listPaidCarts)
+	{
+
+		double grandTotal1=0,grandTotal=0;
+		try {
+		for(CartItem cart: listPaidCarts)
+		{
+			grandTotal1=grandTotal1+cart.getQuantity()*(productDAO.getProduct(cart.getProductId()).getPrice());
+			
+		}
+		int grandTotal2=(int)(grandTotal1*100);
+		grandTotal=(double)grandTotal2/100; 
+		}
+		catch(Exception e) {
+			System.out.println("total error");
+		}
+		
+		return grandTotal;
+	}
+
 	@RequestMapping("/PaymentConfirm")
-	public String PaymentConfirm(@RequestParam("mode") String mode,@RequestParam("ShippingAdress") String Address,HttpSession session)
+	public String PaymentConfirm(@RequestParam("mode") String mode,@RequestParam("ShippingAdress") String Address,HttpSession session,Model m)
 	{ 
 		String username=(String)session.getAttribute("username");
 		List<CartItem> listCartItems=cartDAO.getCartItems(username);
@@ -81,20 +101,21 @@ public class OrderController
 	         Cart2.setPaymentStatus("P");
 	         cartDAO.updateCartItem(Cart2);
 		}
+		List <CartItem> listCart=cartDAO.paidCartItems(username);
+		m.addAttribute("listcart", listCart);
+		m.addAttribute("grandtotal", grandTotal(listCart));
+		
+		
 		
 				OrderDetail orderDetail=new OrderDetail();
 				orderDetail.setTranType(mode);
 				orderDetail.setOrderDate(String.format("%tc",new Date()));
+				orderDetail.setTotalAmount(grandTotal(listCart));
 				orderDetail.setUsername(username);
 				orderDetail.setShippingAddr(Address);
-				double grandTotal=0;
+				orderDAO.ConfirmOrderDetail(orderDetail);
 				
-				for(CartItem cartItem: listCartItems)
-				{
-					grandTotal=grandTotal+cartItem.getQuantity()*(productDAO.getProduct(cartItem.getProductId()).getPrice());
-				}
-				orderDetail.setTotalAmount(grandTotal);
-			    orderDAO.ConfirmOrderDetail(orderDetail);
+							
 			    
 			    List<CartItem> listCartItems1=cartDAO.paidCartItems(username);
 			    for(CartItem Cart3:listCartItems1)
@@ -103,15 +124,20 @@ public class OrderController
 			         Cart4.setPaymentStatus("Paid");
 			         cartDAO.updateCartItem(Cart4);
 				}
-			    List<CartItem> paidcart=cartDAO.paidCartItems(username);
 			    
-			    for(CartItem cartItem1: paidcart)
-				{
-					grandTotal=grandTotal+cartItem1.getQuantity()*(productDAO.getProduct(cartItem1.getProductId()).getPrice());
-				}
-				orderDetail.setTotalAmount(grandTotal);
-			    orderDAO.ConfirmOrderDetail(orderDetail);
-			    
+			   List<OrderDetail> listOrder=orderDAO.getOrder(username);
+			   int id=0;
+			   for(OrderDetail orderdetail:listOrder)
+			   {
+				   if(orderdetail.getOrderId()>id)
+				   {
+					   id=orderdetail.getOrderId();
+				   }
+			   }
+			   OrderDetail order2=orderDAO.getOrderId(id);
+			   m.addAttribute("orderdetail",order2);
+				   
+			   
 			    
 	         return "ThankYou";
 		

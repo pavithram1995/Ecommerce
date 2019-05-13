@@ -15,7 +15,8 @@
 </head>
 <body>
  <form action="<c:url value="/moveCart/${dispinfo.productId}"/>"method="post" enctype="multipart/form-data">
-<center>
+
+  <center>
 <section class="intro">
     <row>
       <div class="col-lg-6 col-sm-12 left">
@@ -24,12 +25,12 @@
 			<img src="<c:url value="/resources/images/${dispinfo.productId}.jpg"/>" width="250" height="250"/>
 			<br/></td>       
       </div>
-      <center>
+      
       <div class="col-lg-6 col-sm-12 right">
         <br><br><br>
         	Name:
           <td>${dispinfo.productName}</td><br><br><br>
-          Description:
+           Description:
 			<td>${dispinfo.prodDesc}</td><br><br><br>
 			No.of Stock available:
 			<td>${dispinfo.stock}</td><br><br><br>
@@ -44,6 +45,7 @@
     </row>
   </section>
   </center>
+
   </form>
 </body>
 </html>

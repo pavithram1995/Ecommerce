@@ -13,9 +13,9 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid" >
     <div class="navbar-header">     
-	<a class="navbar-brand" href="<c:url value="/"/>">Home</a>
-	<a class="navbar-brand" href="#">About Us</a>
-	<a class="navbar-brand" href="#">Contact Us</a>
+	<a class="navbar-brand" href="<c:url value="/home"/>">Home</a>
+	<a class="navbar-brand" href="<c:url value="/aboutus"/>">About Us</a>
+	<a class="navbar-brand" href="<c:url value="/contactus"/>">Contact Us</a>
 	
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html"%>
+<jsp:include page="Header.jsp" />
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -39,13 +40,16 @@
       		<input id="password" type="password" class="form-control" name="password" placeholder="Password">
   		</div>
 		<br><br>
+
 		
 		<br><br>
-		<input type="submit" class="btn btn-info" value="Login"/>
+		<input type="submit" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="Login"/>
 		<input class="btn btn-secondary" type="reset" value="Reset"><br><br><br>
 	</div>
+	<font color="red"><h4>${ErrorMessage}</h4></font>
 		</form>
-	
+		
+		
 	<div class="d-flex justify-content-center links">
 					Don't have an account?
 					<br><br><a href="<c:url value="/register"/>">Register</a>

@@ -10,20 +10,32 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<form action="displayProduct" method="post">
+<form action="<c:url value="/displayProduct"/>" method="post">
 <div class="container">
 
-<c:forEach items="${prolist}" var="pro">
+
 <table class="table table-bordered">
  <tr>
- <td>
- <a href="<c:url value="/descriptionProduct/${pro.productId}"/>"><img src="<c:url value="/resources/images/${pro.productId}.jpg"/>" width="100" height="100"/></a><br></td>
-    	<td>Product Name:	${pro.productName}<br></td>
-		<td>Available stock:	${pro.stock}<br></td>
-		<td>Price:INR. ${pro.price}<br>    </td>
+ <c:forEach items="${prolist}" var="product">
+<td>
+<c:choose>
+  <c:when test="${product.stock>0}">
+    <a href="<c:url value="/descriptionProduct/${product.productId}"/>"><img class="img-fluid img-thumbnail" src="<c:url value="/resources/images/${product.productId}.jpg"/>" style="width:200px; height:200px;"></a>
+ <br>Stock:${product.stock}
+  </c:when>
+  <c:otherwise>
+  <img class="img-fluid img-thumbnail" src="<c:url value="/resources/images/${product.productId}.jpg"/>" style="width:200px; height:200px;">
+  <br>
+ <font color="red">Out of Stock</font>
+  </c:otherwise>
+</c:choose>
+</td>
+</c:forEach>
+ 
+ 
  </tr>
    </table>
-    </c:forEach>
+    
     
   </div>
 </form>

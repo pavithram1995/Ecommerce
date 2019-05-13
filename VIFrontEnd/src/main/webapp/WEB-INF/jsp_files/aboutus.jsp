@@ -10,25 +10,31 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>About Us</title>
 </head>
 <body>
 <ul class="nav nav-pills">
   <li>
-    <a href="index.html">
+    <a href="<c:url value="/"/>">
       <span class="glyphicon glyphicon-home"></span> Home
     </a>
   </li>
-  <li>
-    <a href="shop.html">
-      <span class="glyphicon glyphicon-shopping-cart"></span> Shop
-    </a>
-  </li>
-  <li>
-    <a href="about.html">
-      <span class="glyphicon glyphicon-info-sign"></span> About
-    </a>
-  </li>
-</ul>
+  </ul>
+<center>
+<pre><h4><b>About Us</b></h4>
+Who are we?
+
+Hello and Welcome!!!
+
+Our goal is to inspire people. Akin to you, we are also book lovers! With the sole aim to offer unique reading experiences, 
+we facilitate all aspiring and avid readers alike with a book reviews collection of thousands of fiction and non-fiction books. 
+Not only that, we also inspire people with tips and suggestions as to how inculcating healthy reading habits in their daily routines 
+will help open new horizons of knowledge to seep into their souls.
+
+Our mission: To recommend the best books for all types of readers, be it literature, romance, fiction, history, or self help books.
+
+Our vision: To help you find them on one platform!
+</pre>
+</center>
 </body>
 </html>
